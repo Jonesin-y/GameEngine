@@ -1,0 +1,11 @@
+# 忽略 Visual Studio 产生的临时文件
+.vs/
+out/
+bin/
+obj/
+*.sln.cache
+*.user
+
+# 忽略可执行程序
+*.exe
+*.pdb
