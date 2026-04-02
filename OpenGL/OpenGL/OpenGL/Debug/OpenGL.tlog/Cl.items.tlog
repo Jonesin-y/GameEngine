@@ -1,4 +1,6 @@
 D:\GameEngine\OpenGL\OpenGL\OpenGL\src\Application.cpp;D:\GameEngine\OpenGL\OpenGL\OpenGL\Debug\Application.obj
 D:\GameEngine\OpenGL\OpenGL\OpenGL\src\IndexBuffer.cpp;D:\GameEngine\OpenGL\OpenGL\OpenGL\Debug\IndexBuffer.obj
 D:\GameEngine\OpenGL\OpenGL\OpenGL\src\Renderer.cpp;D:\GameEngine\OpenGL\OpenGL\OpenGL\Debug\Renderer.obj
+D:\GameEngine\OpenGL\OpenGL\OpenGL\src\shader.cpp;D:\GameEngine\OpenGL\OpenGL\OpenGL\Debug\shader.obj
 D:\GameEngine\OpenGL\OpenGL\OpenGL\src\VertexBuffer.cpp;D:\GameEngine\OpenGL\OpenGL\OpenGL\Debug\VertexBuffer.obj
+D:\GameEngine\OpenGL\OpenGL\OpenGL\src\VertexArray.cpp;D:\GameEngine\OpenGL\OpenGL\OpenGL\Debug\VertexArray.obj
