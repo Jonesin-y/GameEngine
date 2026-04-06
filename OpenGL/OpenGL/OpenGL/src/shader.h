@@ -1,5 +1,5 @@
 #pragma once
-#include"Renderer.h"
+
 #include<string>
 #include<unordered_map>
 struct ShaderProgramSource
@@ -24,6 +24,7 @@ public:
 	unsigned int CompileShader(unsigned int type, const std::string& src);
 	unsigned int CreateShader(const std::string& vs_src, const std::string& fs_src);
 	//Set Uniform
-	void SetUniform4f(const std::string& location, float v0, float v1, float v2, float v3);
+	void SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3);
+	void SetUniform1i(const std::string& name, int value);
 	int GetUniformLocation(const std::string& name);
 };

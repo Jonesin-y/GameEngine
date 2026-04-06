@@ -1,5 +1,5 @@
 #pragma once
-#include"Renderer.h"
+
 class VertexBuffer
 {
 private:
@@ -9,7 +9,4 @@ public:
 	~VertexBuffer();
 	void Bind() const;
 	void Unbind() const;
-}
-
-
-;
+};

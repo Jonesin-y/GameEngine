@@ -1,4 +1,5 @@
 #include "shader.h"
+#include"Renderer.h"
 #include <fstream>
 #include<sstream>
 #include<GL/glew.h>
@@ -96,6 +97,12 @@ void Shader::SetUniform4f(const std::string& name, float v0, float v1, float v2,
 {
 	int location = GetUniformLocation(name);
 	GLCALL(glUniform4f(location, v0, v1, v2, v3));
+}
+
+void Shader::SetUniform1i(const std::string& name, int value)
+{
+	int location = GetUniformLocation(name);
+	GLCALL(glUniform1i(location,value));
 }
 
 int Shader::GetUniformLocation(const std::string& name)
