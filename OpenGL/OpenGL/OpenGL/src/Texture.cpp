@@ -26,10 +26,10 @@ Texture::~Texture()
 void Texture::Bind(unsigned int slot) const
 {
 	GLCALL(glActiveTexture(GL_TEXTURE0 + slot));
-	GLCALL(glBindBuffer(GL_TEXTURE_2D, m_RendererID));
+	GLCALL(glBindTexture(GL_TEXTURE_2D, m_RendererID));
 }
 
 void Texture::UnBind() const
 {
-	GLCALL(glBindBuffer(GL_TEXTURE_2D, 0));
+	GLCALL(glBindTexture(GL_TEXTURE_2D, 0));
 }
