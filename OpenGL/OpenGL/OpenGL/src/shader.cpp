@@ -111,6 +111,11 @@ void Shader::SetUniform1i(const std::string& name, int value)
 	GLCALL(glUniform1i(location,value));
 }
 
+void Shader::SetUniformArray2i(const std::string& name, int values[])
+{
+	int location = GetUniformLocation(name);
+	GLCALL(glUniform1iv(location, 2, values));
+}
 int Shader::GetUniformLocation(const std::string& name)
 {
 	if (m_UniformNameCache.find(name) != m_UniformNameCache.end())
