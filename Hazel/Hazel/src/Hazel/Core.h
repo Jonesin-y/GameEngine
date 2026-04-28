@@ -8,5 +8,14 @@
 #else
 	#error Hazel only supports Windows!
 #endif 
+
+#ifdef HZ_ENABLE_ASSERTS
+	#define HZ_ASSERT(x,...) do{if(!x) {HZ_ERROR("Assertion : Failed {0}", __VA_ARGS__); __debugbreak();}} while(false)
+	#define HZ_CORE_ASSERT(x,...) do{if(!x) {HZ_CORE_ERROR("Assertion : Failed {0}", __VA_ARGS__); __debugbreak();}} while(false)
+#else
+	#define HZ_ASSERT(x,...) 
+	#define HZ_CORE_ASSERT(x,...)
+#endif
+
 //use for event system
 #define BIT(x) (1 << x) 

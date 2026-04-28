@@ -6,11 +6,11 @@ namespace Hazel {
 	{
 		EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryKeyboard)
 	public:
-		inline int GetKeyCode() const { return p_KeyCode; }
+		inline int GetKeyCode() const { return m_KeyCode; }
 	protected:
-		int p_KeyCode;
+		int m_KeyCode;
 		KeyEvent(int KeyCode) :
-			p_KeyCode(KeyCode) {}
+			m_KeyCode(KeyCode) {}
 	};
 	class HAZEL_API KeyPressedEvent :public KeyEvent
 	{
@@ -22,7 +22,7 @@ namespace Hazel {
 		virtual std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "KeyPressedEvent: " << p_KeyCode << "( " << m_RepeatCount << " repeats)";
+			ss << "KeyPressedEvent: " << m_KeyCode << "( " << m_RepeatCount << " repeats)";
 			return ss.str();
 		}
 	private:
@@ -37,7 +37,7 @@ namespace Hazel {
 		virtual std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "KeyReleasedEvent: " << p_KeyCode;
+			ss << "KeyReleasedEvent: " << m_KeyCode;
 			return ss.str();
 		}
 		

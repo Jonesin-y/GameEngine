@@ -5,20 +5,30 @@ workspace "Hazel"
     filter "system:windows"
         buildoptions { "/utf-8" }
     filter {}
+    --Include directories relative to root folder (solution directory)
+    IncludeDir = {}
+    IncludeDir["GLFW"]= "Hazel/vendor/GLFW/include"
+    include "Hazel/vendor/GLFW"
 project "Hazel"
     location "Hazel"
     kind "SharedLib"
     language "C++"
     targetdir("bin/"..outputdir.."/%{prj.name}")
     objdir("bin-int/"..outputdir.."/%{prj.name}")
+    pchheader "hzpch.h"
+    pchsource "Hazel/src/Hazel/hzpch.cpp"
     files{
         "%{prj.name}/src/**.h",
         "%{prj.name}/src/**.cpp"
     }
     includedirs{
         "$(SolutionDir)%{prj.name}/vendor/spdlog/include",
-        "$(SolutionDir)%{prj.name}/src/Hazel"
-
+        "$(SolutionDir)%{prj.name}/src/Hazel",
+        "$(SolutionDir)%{IncludeDir.GLFW}"
+    }
+    links{
+        "GLFW",
+        "opengl32.lib"
     }
     filter "system:windows"
         cppdialect "C++20"

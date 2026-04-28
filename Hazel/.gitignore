@@ -1,0 +1,7 @@
+# Compile files
+bin/
+bin-int/
+*.pch
+*.obj
+*.exe
+.vs/

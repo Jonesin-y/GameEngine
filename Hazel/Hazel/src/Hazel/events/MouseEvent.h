@@ -2,6 +2,7 @@
 #include"Event.h"
 #include<sstream>
 namespace Hazel {
+	
 	class HAZEL_API MouseMovedEvent :public Event
 	{
 		EVENT_CLASS_TYPE(MouseMoved);
@@ -40,41 +41,44 @@ namespace Hazel {
 	private:
 		float m_ScrolledX, m_ScrolledY;
 	};
-	class HAZEL_API MouseButtonPressedEvent :public Event
+	class HAZEL_API MouseButtonEvent :public Event
+	{
+		EVENT_CLASS_CATEGORY(EventCategoryMouseButton | EventCategoryInput);
+	public:
+		MouseButtonEvent(int buttonCode)
+			: m_ButtonCode(buttonCode) {
+		}
+		inline int GetButtonCode() const { return m_ButtonCode; }
+	protected:
+		int m_ButtonCode;
+	};
+	class HAZEL_API MouseButtonPressedEvent :public MouseButtonEvent
 	{
 		EVENT_CLASS_TYPE(MouseButtonPressed);
-		EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouseButton);
 	public:
-		MouseButtonPressedEvent(int buttonCode, int repeatCount)
-			: m_ButtonCode(buttonCode), m_RepeatCount(repeatCount) {}
-		inline int GetButtonCode() const { return m_ButtonCode; }
-		inline int GetRepeatCount() const { return m_RepeatCount; }
+		MouseButtonPressedEvent(int buttonCode)
+			: MouseButtonEvent(buttonCode) {}
 		virtual std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "MouseButtonPressedEvent: " << m_ButtonCode << ", " << m_RepeatCount;
+			ss << "MouseButtonPressedEvent: " << m_ButtonCode ;
 			return ss.str();
 		}
-	private:
-		int m_ButtonCode, m_RepeatCount;
+	
 	};
-	class HAZEL_API MouseButtonReleasedEvent :public Event
+	class HAZEL_API MouseButtonReleasedEvent :public MouseButtonEvent
 	{
 		EVENT_CLASS_TYPE(MouseButtonReleased);
-		EVENT_CLASS_CATEGORY(EventCategoryMouseButton | EventCategoryInput);
 	public:
 		MouseButtonReleasedEvent(int buttonCode) :
-			m_ButtonCode(buttonCode) {
+			MouseButtonEvent(buttonCode) {
 		}
-		inline int GetButtonCode() const { return m_ButtonCode; }
 		virtual std::string ToString() const override
 		{
 			std::stringstream ss;
 			ss << "MouseButtonReleasedEvent: " << m_ButtonCode;
 			return ss.str();
 		}
-	private:
-		int m_ButtonCode;
 	};
 	
 }
