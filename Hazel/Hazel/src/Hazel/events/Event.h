@@ -36,8 +36,7 @@ namespace Hazel {
 		{
 			return GetCategoryFlags() & static_cast<int>(category);
 		}
-	protected:
-		bool m_Handled = false;
+		bool Handled = false;
 	};
 	class HAZEL_API EventDispatcher
 	{
@@ -53,7 +52,7 @@ namespace Hazel {
 		{
 			if (m_Event.GetEventType() == T::GetStaticType())
 			{
-				return m_Event.m_Handled = func(*(T*)&m_Event);
+				return m_Event.Handled = func(*(T*)&m_Event);
 			}
 			return false;
 		}

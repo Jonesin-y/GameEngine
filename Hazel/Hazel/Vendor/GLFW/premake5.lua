@@ -100,6 +100,7 @@ project "GLFW"
 
 	filter "configurations:Debug"
 		runtime "Debug"
+		buildoptions "/MDd"
 		symbols "on"
 
 	filter { "system:windows", "configurations:Debug-AS" }	
@@ -111,9 +112,11 @@ project "GLFW"
 
 	filter "configurations:Release"
 		runtime "Release"
+		buildoptions "/MD"
 		optimize "speed"
 
     filter "configurations:Dist"
 		runtime "Release"
+		buildoptions "/MD"
 		optimize "speed"
         symbols "off"
