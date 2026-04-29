@@ -16,12 +16,17 @@ namespace Hazel {
 		void PushOverlay(Layer* overlay);	
 		void PopLayer(Layer* layer)		;	
 		void PopOverlay(Layer* overlay)	;
+		static Application* Get() { return s_Application; }
+		inline Window& GetWindow() { return *m_Window; }
 		void Run();
 	private:
+
 		bool OnWindowClose(WindowCloseEvent& event);
 		std::unique_ptr<Window> m_Window;
 		LayerStack m_LayerStack;
 		bool m_Running = true;
+	private:
+		static Application* s_Application;
 	};
 	Application* CreateApplication();
 

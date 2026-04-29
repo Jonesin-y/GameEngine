@@ -1,17 +1,24 @@
 #include"hzpch.h"
 #include"Log.h"
 #include "Application.h"
-#include"GLFW/glfw3.h"
 #include"events/ApplicationEvent.h"
 #include"events/KeyEvent.h"
 #include"events/MouseEvent.h"
+#include<GLFW/glfw3.h>
+#include<glad/glad.h>
+
 namespace Hazel
 {
 #define BIND_EVENT_FN(x) std::bind(&Application::x,this,std::placeholders::_1)
+	Application* Application::s_Application = nullptr;
 	Application::Application()
 	{
+		Application::s_Application = this;
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+		unsigned int id;
+		glGenVertexArrays(1, &id);
+
 	}
 	Application::~Application()
 	{

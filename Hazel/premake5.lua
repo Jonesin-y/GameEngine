@@ -8,7 +8,12 @@ workspace "Hazel"
     --Include directories relative to root folder (solution directory)
     IncludeDir = {}
     IncludeDir["GLFW"]= "Hazel/vendor/GLFW/include"
+    IncludeDir["Glad"]= "Hazel/vendor/Glad/include" 
+    IncludeDir["imgui"]= "Hazel/vendor/imgui"  
+
     include "Hazel/vendor/GLFW"
+    include "Hazel/vendor/Glad"
+    include "Hazel/vendor/imgui"
 project "Hazel"
     location "Hazel"
     kind "SharedLib"
@@ -24,9 +29,14 @@ project "Hazel"
     includedirs{
         "$(SolutionDir)%{prj.name}/vendor/spdlog/include",
         "$(SolutionDir)%{prj.name}/src/Hazel",
-        "$(SolutionDir)%{IncludeDir.GLFW}"
+        "$(SolutionDir)%{prj.name}/src/Platform",
+        "$(SolutionDir)%{IncludeDir.GLFW}",
+        "$(SolutionDir)%{IncludeDir.Glad}",
+        "$(SolutionDir)%{IncludeDir.imgui}"
     }
     links{
+        "imGui",
+        "Glad",
         "GLFW",
         "opengl32.lib"
     }
@@ -36,7 +46,8 @@ project "Hazel"
         systemversion "latest"
         defines{
             "HZ_PLATFORM_WINDOWS",
-            "HZ_BUILD_DLL"
+            "HZ_BUILD_DLL",
+            "GLFW_INCLUDE_NONE"
         }
         postbuildcommands{
             ("IF NOT EXIST \"../bin/" ..outputdir.. "/SandBox\" mkdir \"../bin/" ..outputdir.. "/SandBox\""),
