@@ -66,7 +66,7 @@ namespace Hazel
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 		
 	}
-	void imGuiLayer::OnEvent()
+	void imGuiLayer::OnEvent(Event& event)
 	{
 	}
 }
