@@ -4,6 +4,7 @@
 namespace Hazel {
 	class HAZEL_API WindowResizeEvent :public Event
 	{
+	public:
 		EVENT_CLASS_TYPE(WindowResize);
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	public:

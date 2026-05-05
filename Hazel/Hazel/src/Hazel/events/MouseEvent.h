@@ -5,6 +5,7 @@ namespace Hazel {
 	
 	class HAZEL_API MouseMovedEvent :public Event
 	{
+	public:
 		EVENT_CLASS_TYPE(MouseMoved);
 		EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouse)
 	public:
@@ -24,6 +25,7 @@ namespace Hazel {
 	};
 	class HAZEL_API MouseScrolledEvent :public Event
 	{
+	public:
 		EVENT_CLASS_TYPE(MouseScrolled);
 		EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouse);
 	public:
@@ -43,6 +45,7 @@ namespace Hazel {
 	};
 	class HAZEL_API MouseButtonEvent :public Event
 	{
+	public:
 		EVENT_CLASS_CATEGORY(EventCategoryMouseButton | EventCategoryInput);
 	public:
 		MouseButtonEvent(int buttonCode)
@@ -54,6 +57,7 @@ namespace Hazel {
 	};
 	class HAZEL_API MouseButtonPressedEvent :public MouseButtonEvent
 	{
+	public:
 		EVENT_CLASS_TYPE(MouseButtonPressed);
 	public:
 		MouseButtonPressedEvent(int buttonCode)
@@ -68,6 +72,7 @@ namespace Hazel {
 	};
 	class HAZEL_API MouseButtonReleasedEvent :public MouseButtonEvent
 	{
+	public:
 		EVENT_CLASS_TYPE(MouseButtonReleased);
 	public:
 		MouseButtonReleasedEvent(int buttonCode) :

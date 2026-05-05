@@ -4,6 +4,7 @@
 namespace Hazel {
 	class HAZEL_API KeyEvent :public Event
 	{
+	public:
 		EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryKeyboard)
 	public:
 		inline int GetKeyCode() const { return m_KeyCode; }
@@ -14,6 +15,7 @@ namespace Hazel {
 	};
 	class HAZEL_API KeyPressedEvent :public KeyEvent
 	{
+	public:
 		EVENT_CLASS_TYPE(KeyPressed);
 	public:
 		KeyPressedEvent(int keyCode, int repeatCount)
@@ -30,6 +32,7 @@ namespace Hazel {
 	};
 	class HAZEL_API KeyReleasedEvent :public KeyEvent
 	{
+	public:
 		EVENT_CLASS_TYPE(KeyReleased);
 	public:
 		KeyReleasedEvent(int KeyCode) :
