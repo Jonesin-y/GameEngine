@@ -16,7 +16,7 @@ bool Hazel::WindowsInput::IsMouseButtonPressedImpl(int button)
 	return state == GLFW_PRESS;
 }
 
-std::pair<float, float> Hazel::WindowsInput::GetMousePositionImpl()
+std::pair<float, float> Hazel::WindowsInput::GetMousePosImpl()
 {
 	auto window = static_cast<GLFWwindow*>(Application::Get()->GetWindow().GetNativeWindow());
 	double xpos, ypos;
@@ -26,13 +26,13 @@ std::pair<float, float> Hazel::WindowsInput::GetMousePositionImpl()
 
 float Hazel::WindowsInput::GetMousePosXImpl()
 {
-	auto [x, y] = GetMousePositionImpl();
+	auto [x, y] = GetMousePosImpl();
 	return x;
 }
 
 float Hazel::WindowsInput::GetMousePosYImpl()
 {
-	auto [x, y] = GetMousePositionImpl();
+	auto [x, y] = GetMousePosImpl();
 	return y;
 }
 

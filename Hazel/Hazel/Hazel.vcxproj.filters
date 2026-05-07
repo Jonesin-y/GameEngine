@@ -71,6 +71,7 @@
     </ClInclude>
     <ClInclude Include="src\Hazel\Input.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Hazel\KeyCode.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Hazel\Application.cpp">
