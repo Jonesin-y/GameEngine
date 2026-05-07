@@ -1,4 +1,6 @@
 workspace "Hazel"
+    startproject "SandBox"
+
     outputdir="%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
     architecture "x64"
     configurations {"Debug", "Release", "Dist"}
@@ -8,12 +10,12 @@ workspace "Hazel"
     --Include directories relative to root folder (solution directory)
     IncludeDir = {}
     IncludeDir["GLFW"]= "Hazel/vendor/GLFW/include"
-    IncludeDir["Glad"]= "Hazel/vendor/Glad/include" 
-    IncludeDir["imgui"]= "Hazel/vendor/imgui"  
-
+    IncludeDir["Glad"]= "Hazel/vendor/Glad/include"
+    IncludeDir["imgui"]="Hazel/vendor/imgui"
     include "Hazel/vendor/GLFW"
     include "Hazel/vendor/Glad"
     include "Hazel/vendor/imgui"
+
 project "Hazel"
     location "Hazel"
     kind "SharedLib"
@@ -36,13 +38,13 @@ project "Hazel"
     }
     links{
         "imGui",
-        "Glad",
         "GLFW",
+        "Glad",
         "opengl32.lib"
     }
     filter "system:windows"
         cppdialect "C++20"
-        staticruntime "On"
+        staticruntime "off"
         systemversion "latest"
         defines{
             "HZ_PLATFORM_WINDOWS",
@@ -56,15 +58,15 @@ project "Hazel"
     filter {}
     filter "configurations:Debug"
         defines "HZ_DEBUG"
-        buildoptions "/MDd"
+        runtime "Debug"
         symbols "On"
     filter "configurations:Release"
         defines "HZ_RELEASE"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
     filter "configurations:Dist"
         defines "HZ_DIST"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
     filter{}
 project "SandBox"
@@ -86,21 +88,21 @@ project "SandBox"
     }
     filter "system:windows"
         cppdialect "C++20"
-        staticruntime "On"
+        staticruntime "off"
         systemversion "latest"
         defines{
             "HZ_PLATFORM_WINDOWS"
         }
     filter "configurations:Debug"
         defines "HZ_DEBUG"
-        buildoptions "/MDd"
+        runtime "Debug"
         symbols "On"
     filter "configurations:Release"
         defines "HZ_RELEASE"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
     filter "configurations:Dist"
         defines "HZ_DIST"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
     filter {}

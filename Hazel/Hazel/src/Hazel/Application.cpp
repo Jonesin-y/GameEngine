@@ -1,9 +1,10 @@
 #include"hzpch.h"
 #include"Log.h"
-#include "Application.h"
+#include"Application.h"
 #include"events/ApplicationEvent.h"
 #include"events/KeyEvent.h"
 #include"events/MouseEvent.h"
+#include"Windows/WindowsInput.h"
 #include<GLFW/glfw3.h>
 #include<glad/glad.h>
 
@@ -58,6 +59,8 @@ namespace Hazel
 				layer->OnUpdate();
 			}
 			m_Window->OnUpdate();
+			auto [x,y] = Input::GetMousePosition();
+			HZ_CORE_TRACE("{0},{1}", x, y);
 		}
 	}
 	bool Application::OnWindowClose(WindowCloseEvent& event)

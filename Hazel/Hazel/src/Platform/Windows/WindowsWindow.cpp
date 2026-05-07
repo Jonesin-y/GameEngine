@@ -6,8 +6,10 @@
 #include"events/MouseEvent.h"
 #include<glad/glad.h>
 #include<GLFW/glfw3.h>
+#include "WindowsInput.h"
 namespace Hazel
 {
+	Input* Input::s_Instance = new WindowsInput();
 	static bool s_GLFWInitialized = false;
 	static void GLFWErrorCallback(int error, const char* detail)
 	{

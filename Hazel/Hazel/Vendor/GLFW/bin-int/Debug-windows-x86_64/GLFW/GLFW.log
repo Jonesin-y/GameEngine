@@ -1,5 +1,4 @@
-﻿cl : 命令行  warning D9025: 正在重写“/MTd”(用“/MDd”)
-  context.c
+﻿  context.c
   egl_context.c
   init.c
   input.c
