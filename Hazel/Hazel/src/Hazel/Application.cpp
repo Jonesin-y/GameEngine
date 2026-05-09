@@ -1,4 +1,5 @@
 #include"hzpch.h"
+#include"KeyCode.h"
 #include"Log.h"
 #include"Application.h"
 #include"events/ApplicationEvent.h"
@@ -17,6 +18,8 @@ namespace Hazel
 		Application::s_Application = this;
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+		m_imGuiLayer = new imGuiLayer;
+		PushOverlay(m_imGuiLayer);
 		unsigned int id;
 		glGenVertexArrays(1, &id);
 
@@ -58,9 +61,14 @@ namespace Hazel
 			{
 				layer->OnUpdate();
 			}
+			m_imGuiLayer->Begin();
+			for (Layer* layer : m_LayerStack)
+			{
+				layer->OnImGuiRender();
+			}
+			m_imGuiLayer->End();
 			m_Window->OnUpdate();
-			auto [x,y] = Input::GetMousePosition();
-			HZ_CORE_TRACE("{0},{1}", x, y);
+			
 		}
 	}
 	bool Application::OnWindowClose(WindowCloseEvent& event)

@@ -15,7 +15,8 @@ namespace Hazel {
 		std::vector<Layer*>::iterator end() { return m_Layers.end(); }
 
 	private:
+		int m_LayerInsertIndex ;
 		std::vector<Layer*> m_Layers;
-		std::vector<Layer*>::iterator m_LayerInsert;
+		
 	};
 }

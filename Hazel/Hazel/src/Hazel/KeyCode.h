@@ -1,6 +1,6 @@
 #pragma once
 //From glfw
-
+#ifdef HZ_PLATFORM_WINDOWS
 /* The unknown key */
 #define HZ_KEY_UNKNOWN            -1
 
@@ -143,3 +143,4 @@
 #define HZ_MOUSE_BUTTON_LEFT      HZ_MOUSE_BUTTON_1
 #define HZ_MOUSE_BUTTON_RIGHT     HZ_MOUSE_BUTTON_2
 #define HZ_MOUSE_BUTTON_MIDDLE    HZ_MOUSE_BUTTON_3
+#endif

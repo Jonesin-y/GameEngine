@@ -3,6 +3,7 @@
 #include "Core.h"
 #include "events/ApplicationEvent.h"
 #include "window.h"
+#include"imgui/imGuiLayer.h"
 #include"Layer.h"
 #include"LayerStack.h"
 namespace Hazel {
@@ -16,13 +17,14 @@ namespace Hazel {
 		void PushOverlay(Layer* overlay);	
 		void PopLayer(Layer* layer)		;	
 		void PopOverlay(Layer* overlay)	;
-		static Application* Get() { return s_Application; }
+		static Application& Get() { return *s_Application; }
 		inline Window& GetWindow() { return *m_Window; }
 		void Run();
 	private:
-
+		
 		bool OnWindowClose(WindowCloseEvent& event);
 		std::unique_ptr<Window> m_Window;
+		imGuiLayer* m_imGuiLayer;
 		LayerStack m_LayerStack;
 		bool m_Running = true;
 	private:

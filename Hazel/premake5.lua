@@ -12,6 +12,7 @@ workspace "Hazel"
     IncludeDir["GLFW"]= "Hazel/vendor/GLFW/include"
     IncludeDir["Glad"]= "Hazel/vendor/Glad/include"
     IncludeDir["imgui"]="Hazel/vendor/imgui"
+    IncludeDir["glm"]="Hazel/vendor/glm"
     include "Hazel/vendor/GLFW"
     include "Hazel/vendor/Glad"
     include "Hazel/vendor/imgui"
@@ -26,7 +27,9 @@ project "Hazel"
     pchsource "Hazel/src/Hazel/hzpch.cpp"
     files{
         "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
+        "%{prj.name}/src/**.cpp",
+        "%{prj.name}/vendor/glm/glm/**.hpp",
+        "%{prj.name}/vendor/glm/glm/**.inl"
     }
     includedirs{
         "$(SolutionDir)%{prj.name}/vendor/spdlog/include",
@@ -34,7 +37,8 @@ project "Hazel"
         "$(SolutionDir)%{prj.name}/src/Platform",
         "$(SolutionDir)%{IncludeDir.GLFW}",
         "$(SolutionDir)%{IncludeDir.Glad}",
-        "$(SolutionDir)%{IncludeDir.imgui}"
+        "$(SolutionDir)%{IncludeDir.imgui}",
+        "$(SolutionDir)%{IncludeDir.glm}"
     }
     links{
         "imGui",
@@ -42,6 +46,8 @@ project "Hazel"
         "Glad",
         "opengl32.lib"
     }
+    filter "files:vendor/imgui/**.cpp"
+        enablepch "Off"
     filter "system:windows"
         cppdialect "C++20"
         staticruntime "off"
@@ -81,7 +87,8 @@ project "SandBox"
     }
     includedirs{
         "$(SolutionDir)Hazel/vendor/spdlog/include",
-        "$(SolutionDir)Hazel/src/Hazel"
+        "$(SolutionDir)Hazel/src/Hazel",
+        "$(SolutionDir)%{IncludeDir.glm}"
     }
     links{
         "Hazel"

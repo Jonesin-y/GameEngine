@@ -18,7 +18,6 @@ class SandBox :public Hazel::Application
 public:
 	SandBox()
 	{
-		PushOverlay(new Hazel::imGuiLayer);
 	};
 	~SandBox()
 	{

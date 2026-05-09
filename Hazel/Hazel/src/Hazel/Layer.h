@@ -11,6 +11,7 @@ namespace Hazel {
 		virtual void OnDetach() {};
 		virtual void OnUpdate() {};
 		virtual void OnEvent(Event& event) {};
+		virtual void OnImGuiRender() {};
 
 		std::string GetName() { return m_LayerName; }
 
